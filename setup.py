@@ -1,8 +1,6 @@
 """This module contains the packaging routine for the pybook package"""
 
 from setuptools import setup, find_packages
-from pip._internal.network.session import PipSession
-from pip._internal.req import parse_requirements
 
 
 def get_requirements(source):
@@ -15,10 +13,13 @@ def get_requirements(source):
 
     """
 
-    install_reqs = parse_requirements(filename=source, session=False)
-
+    install_reqs = parse_requirements(filename=source)
     return [str(ir.req) for ir in install_reqs]
 
+def parse_requirements(filename):
+  with open(filename) as requirements:
+      # Skipping -i https://pypi.org/simple
+    return requirements.readlines()[1:]
 
 setup(
     packages=find_packages(),
