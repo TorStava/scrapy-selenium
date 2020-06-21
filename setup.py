@@ -14,7 +14,7 @@ def get_requirements(source):
     """
 
     install_reqs = parse_requirements(filename=source)
-    return [str(ir.req) for ir in install_reqs]
+    return [req for req in install_reqs]
 
 def parse_requirements(filename):
   with open(filename) as requirements:
