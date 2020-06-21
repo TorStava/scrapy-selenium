@@ -2,7 +2,7 @@
 
 from setuptools import setup, find_packages
 from pip._internal.network.session import PipSession
-from pip._internal.req.req_file import parse_requirements
+from pip._internal.req import parse_requirements
 
 
 def get_requirements(source):
